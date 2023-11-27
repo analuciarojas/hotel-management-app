@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Inicio from './pages/Inicio';
+import FormularioReporte from './components/FormularioReporte/FormularioReporte';
+import ResultadoReporte from './components/ResultadoReporte/ResultadoReporte';
+import Mantenimiento from './components/Mantenimiento/Mantenimiento';
+import NoEncontrado from './pages/NoEncontrado';
 
 function App() {
+  const [paginaSeleccionada, setPaginaSeleccionada] = useState('Inicio');
+
+  const manejarClicNavegacion = (pagina) => {
+    setPaginaSeleccionada(pagina);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section>
+      <nav>
+        <button onClick={() => manejarClicNavegacion('Inicio')}>Inicio</button>
+        <button onClick={() => manejarClicNavegacion('Formulario de Reporte')}>Formulario de Reporte</button>
+        <button onClick={() => manejarClicNavegacion('Resultado de Reporte')}>Resultado de Reporte</button>
+        <button onClick={() => manejarClicNavegacion('Mantenimiento')}>Mantenimiento</button>
+      </nav>
+      
+      {paginaSeleccionada === 'Inicio' && <Inicio />}
+      {paginaSeleccionada === 'Formulario de Reporte' && <FormularioReporte />}
+      {paginaSeleccionada === 'Resultado de Reporte' && <ResultadoReporte />}
+      {paginaSeleccionada === 'Mantenimiento' && <Mantenimiento />}
+
+      {['Inicio', 'Formulario de Reporte', 'Resultado de Reporte', 'Mantenimiento'].indexOf(paginaSeleccionada) === -1 && <NoEncontrado />}
+    </section>
   );
 }
 

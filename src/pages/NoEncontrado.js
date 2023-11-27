@@ -1,0 +1,12 @@
+import React from 'react';
+
+const NoEncontrado = () => {
+  return (
+    <div>
+      <h2>404 - Página no encontrada</h2>
+      <p>Lo siento, la página que estás buscando no existe.</p>
+    </div>
+  );
+};
+
+export default NoEncontrado;

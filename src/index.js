@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './styles/main.css';  // Agregado para importar los estilos
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
